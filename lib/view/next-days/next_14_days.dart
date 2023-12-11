@@ -22,7 +22,7 @@ class NextDays extends StatelessWidget {
           height: size.height,
           width: size.width,
           child: Stack(
-            alignment: Alignment.center,
+            // alignment: Alignment.center,
             children: [
               Positioned(
                 top: 1,
@@ -30,15 +30,17 @@ class NextDays extends StatelessWidget {
                   height: size.height / 1.8,
                   width: size.width,
                   decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
                         Color(0xff6ac5fe),
                         Color(0xff45b6fe),
                         Color(0xff45b6fe),
                         // Colors.blue
-                      ])),
+                      ],
+                    ),
+                  ),
                   child: Column(
                     children: [
                       const SizedBox(
@@ -53,22 +55,14 @@ class NextDays extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 1,
-                child: Container(
-                  height: size.height / 1.9,
-                  width: size.width,
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(50),
-                          topRight: Radius.circular(50))),
-                ),
-              ),
               BottomList(),
-              Hero(
-                tag: 'TAG',
-                child: Material(color: Colors.transparent, child: CenterCard()),
+              Positioned(
+                top: 220,
+                left: 10,
+                child: Hero(
+                  tag: 'TAG',
+                  child: Material(color: Colors.transparent, child: CenterCard()),
+                ),
               )
             ],
           ),
