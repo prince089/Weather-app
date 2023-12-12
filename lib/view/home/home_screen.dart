@@ -7,11 +7,13 @@ import 'package:wether_app/view/home/components/info_card.dart';
 import 'package:wether_app/view/home/components/location.dart';
 import 'package:wether_app/view/next-days/next_14_days.dart';
 import 'package:wether_app/view_model/controllers/home_controller.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+
 class _HomeScreenState extends State<HomeScreen> {
   final controller = Get.put(HomeController());
   @override
@@ -21,7 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SingleChildScrollView(
-
             child: Column(
               children: [
                 const SizedBox(
@@ -33,16 +34,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 // ),
                 Location(),
                 Hero(
-                    tag: 'TAG',
-                    child: Material(
-                        color: Colors.transparent,
-                        child: InfoCard())),
+                  tag: 'TAG',
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InfoCard(),
+                  ),
+                ),
                 ContainerList(),
                 const SizedBox(
                   height: 20,
                 ),
                 GestureDetector(
-                  onTap: () => Get.to(()=> NextDays()),
+                  onTap: () => Get.to(() => NextDays()),
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
@@ -67,8 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 HoursList(),
-            
-            
               ],
             ),
           ),

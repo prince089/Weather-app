@@ -16,106 +16,38 @@ class NextDays extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
+  // print(size);
     return Scaffold(
       body: SafeArea(
-        child: SizedBox(
-            height: size.height,
-            width: size.width,
-            child: CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  automaticallyImplyLeading: false,
-                  expandedHeight: 220,
-                  // floating: false,
-                  // pinned: true,
-                  flexibleSpace: Container(
-                    height: size.height / 1.8,
-                    width: size.width,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(40),
-                        bottomRight: Radius.circular(40),
-                      ),
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          Color(0xff6ac5fe),
-                          Color(0xff45b6fe),
-                          Color(0xff45b6fe),
-                          // Colors.blue
-                        ],
-                      ),
-                    ),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          const CustomAppBar(),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          DaysList(),
-                        ],
-                      ),
-                    ),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              // expandedHeight: size.height/1.5,
+              expandedHeight: size.height > 800 ?size.height / 1.9: size.height/1.5,
+              floating: false,
+              // pinned: true,
+              flexibleSpace: Container(
+                height:  size.height > 800 ?size.height / 1.9: size.height/1.5,
+                width: size.width,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(40),
+                    bottomRight: Radius.circular(40),
                   ),
-                ),
-                SliverList(
-                  delegate: SliverChildListDelegate(
-                    [
-                      Container(
-                        decoration: const BoxDecoration(
-                          // color: Colors.blue,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(15.0),
-                            bottomRight: Radius.circular(15.0),
-                          ),
-                        ),
-                        child: Column(
-                          children: [
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Hero(
-                              tag: 'TAG',
-                              child: Material(
-                                  color: Colors.transparent,
-                                  child: CenterCard()),
-                            ),
-                            BottomList(),
-                          ],
-                        ),
-                      )
-                      //DaysList(),
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color(0xff6ac5fe),
+                      Color(0xff45b6fe),
+                      Color(0xff45b6fe),
+                      // Colors.blue
                     ],
                   ),
                 ),
-              ],
-            )
-
-            /*Stack(
-            // alignment: Alignment.center,
-            children: [
-              Positioned(
-                top: 1,
-                child: Container(
-                  height: size.height / 1.8,
-                  width: size.width,
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        Color(0xff6ac5fe),
-                        Color(0xff45b6fe),
-                        Color(0xff45b6fe),
-                        // Colors.blue
-                      ],
-                    ),
-                  ),
+                child: SingleChildScrollView(
+                  physics: NeverScrollableScrollPhysics(),
                   child: Column(
                     children: [
                       const SizedBox(
@@ -126,22 +58,50 @@ class NextDays extends StatelessWidget {
                         height: 20,
                       ),
                       DaysList(),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        decoration: const BoxDecoration(
+                          // color: Colors.blue,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(15.0),
+                            bottomRight: Radius.circular(15.0),
+                          ),
+                        ),
+                        child: Expanded(
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Hero(
+                                tag: 'TAG',
+                                child: Material(
+                                    color: Colors.transparent,
+                                    child: CenterCard()),
+                              ),
+
+                            ],
+                          ),
+                        ),
+                      )
+
                     ],
                   ),
                 ),
               ),
-              BottomList(),
-              Positioned(
-                top: 220,
-                left: 10,
-                child: Hero(
-                  tag: 'TAG',
-                  child: Material(color: Colors.transparent, child: CenterCard()),
-                ),
-              )
-            ],
-          ),*/
             ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  BottomList(),
+                  //DaysList(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

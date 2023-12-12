@@ -13,9 +13,11 @@ class BottomList extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return SizedBox(
-      height: size.height / 2,
+      // height: size.height / 2,
       width: size.width,
       child: ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
         itemCount: homeController.model.value!.days!.length,
         itemBuilder: (context, index) {
           return Card(

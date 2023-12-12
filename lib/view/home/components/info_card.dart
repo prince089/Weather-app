@@ -12,7 +12,7 @@ class InfoCard extends StatelessWidget {
     var size=MediaQuery.sizeOf(context);
     return SizedBox(
       height: 240,
-      width: size.width,
+      width: size.width > 700 ? size.width/1.5:size.width,
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [

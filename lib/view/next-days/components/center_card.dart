@@ -14,12 +14,16 @@ class CenterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
+
+    // print(size);
     return Stack(
       children: [
-        // SizedBox(height: 10,),
         Container(
-          height: 350,
-          width: size.width - 20,
+          height : size.height / 1.3 > 800 ? 350 : 250,
+          // height: 350,
+          // height: 250,
+          width: size.width >= 600 ? size.width/2 : size.width-20,
+          // width: size.width - 20,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
             gradient: const LinearGradient(
@@ -83,8 +87,11 @@ class CenterCard extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+
+                    //size.height >=250 ? :,
                     children: [
-                      const Spacer(),
+                      size.height/1.3 > 800 ? const Spacer() :SizedBox(height: 20,) ,
+
                       Obx(
                         () => Text(
                           controller.day.value.conditions,
@@ -111,6 +118,8 @@ class CenterCard extends StatelessWidget {
                   ),
                 ),
               ),
+              size.height / 1.3 < 800
+                  ? SizedBox():
               Align(
                 alignment: Alignment.centerRight,
                 child: ShaderMask(
@@ -133,26 +142,30 @@ class CenterCard extends StatelessWidget {
               Positioned(
                 bottom: 30,
                 child: SizedBox(
-                  width: size.width - 60,
+                  width: size.width >= 600 ? size.width/2 : size.width-60,
                   child: SmallContainerList(),
                 ),
               )
             ],
           ),
         ),
+        size.height / 1.3 < 800
+            ? SizedBox()
+            :
+       // const Spacer(),
         Positioned(
-          // left: 10,
-          // top: 0,
-          child: Obx(
-            () => Image.asset(
-              controller.getImage(
-                controller.currentDay.value,
+                // left: 10,
+                top: 0,
+                child: Obx(
+                  () => Image.asset(
+                    controller.getImage(
+                      controller.currentDay.value,
+                    ),
+                    height: 150,
+                    width: 150,
+                  ),
+                ),
               ),
-              height: 190,
-              width: 190,
-            ),
-          ),
-        ),
       ],
     );
   }
