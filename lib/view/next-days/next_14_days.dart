@@ -69,21 +69,19 @@ class NextDays extends StatelessWidget {
                             bottomRight: Radius.circular(15.0),
                           ),
                         ),
-                        child: Expanded(
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Hero(
-                                tag: 'TAG',
-                                child: Material(
-                                    color: Colors.transparent,
-                                    child: CenterCard()),
-                              ),
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Hero(
+                              tag: 'TAG',
+                              child: Material(
+                                  color: Colors.transparent,
+                                  child: CenterCard()),
+                            ),
 
-                            ],
-                          ),
+                          ],
                         ),
                       )
 
