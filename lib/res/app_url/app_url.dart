@@ -1,3 +1,3 @@
 class AppUrl{
-  static const url='https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Jamnagar?unitGroup=metric&key=7JWQMV9WC5JJBUQF22L83ERCB&contentType=json';
+  static const url='https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Jamnagar?unitGroup=metric&key=ZVWKBDUUC4VZKJGFKU35W59HQ&contentType=json';
 }

@@ -10,7 +10,7 @@ class DaysList extends StatelessWidget {
       height: 130,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: controller.homeController.model.value!.days!.length,
+        itemCount: controller.model.value!.days!.length,
         itemBuilder: (context, index) {
           return Obx(() => GestureDetector(
             onTap: () => controller.setDay(index),

@@ -7,7 +7,7 @@ import 'center_card.dart';
 
 class BottomList extends StatelessWidget {
   BottomList({super.key});
-  final homeController = Get.put(HomeController());
+  // final homeController = Get.put(HomeController());
   final controller = Get.put(DaysController());
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class BottomList extends StatelessWidget {
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: homeController.model.value!.days!.length,
+        itemCount: controller.model.value!.days!.length,
         itemBuilder: (context, index) {
           return Card(
             color: Colors.white,
