@@ -14,13 +14,21 @@ class CustomAppBar extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              Get.log('from next 14 day on press route: ${Get.routing.route}');
-              Get.log('from next 14 dayon press  route tree : ${Get.routeTree}');
-              Get.log('from next 14 dayon press  prevoious : ${Get.routing.previous}');
-              Get.toNamed('/Next14Day');
+              // Get.log('from next 14 day on press route: ${Get.routing.route}');
+              // Get.log('from next 14 dayon press  route tree : ${Get.routeTree}');
+              // Get.log('from next 14 dayon press  prevoious : ${Get.routing.previous}');
+              // Get.toNamed('/Next14Day');
               // Get.toNamed('/Next14Day')k();
-              // Get.toNamed('/HomeScreen');
-              Get.back();
+              if(Get.routing.previous.isEmpty){
+                Get.log("empty");
+                Get.toNamed('/HomeScreen');
+              }
+              else{
+                Get.log("not empty");
+                Get.back();
+              }
+              //
+
 
             },
             child: Container(

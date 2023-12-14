@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:wether_app/view/next-days/components/app_bar.dart';
 import 'package:wether_app/view/next-days/components/bottom_list.dart';
 import 'package:wether_app/view/next-days/components/days_list.dart';
+import 'package:wether_app/view_model/controllers/Auth_controller.dart';
 import 'package:wether_app/view_model/controllers/days_controller.dart';
 import 'package:wether_app/view_model/services/splash_services/splash_services.dart';
 import 'components/center_card.dart';
@@ -17,11 +18,13 @@ class NextDays extends StatefulWidget {
 }
 
 class _NextDaysState extends State<NextDays> {
+  AuthController authController = Get.put(AuthController());
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    SplashServices.getApiData2();
+
+      SplashServices.getApiData2();
+
   }
 
   final controller = Get.put(DaysController());
@@ -29,16 +32,6 @@ class _NextDaysState extends State<NextDays> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
-    // print(size);
-    Get.log('from next 14 day at init route: ${Get.routing.route}');
-    Get.log('from next 14 day at init  route tree : ${Get.routeTree}');
-    Get.log('from next 14 day at init  prevoious : ${Get.routing.previous}');
-    if(Get.routing.previous.isEmpty){
-      Get.log("empty");
-    }
-    else{
-      Get.log("not empty");
-    }
     return Scaffold(
       body: SafeArea(
         child: Obx(

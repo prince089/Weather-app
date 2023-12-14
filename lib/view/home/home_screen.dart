@@ -4,7 +4,9 @@ import 'package:wether_app/view/home/components/container_list.dart';
 import 'package:wether_app/view/home/components/hours_list.dart';
 import 'package:wether_app/view/home/components/info_card.dart';
 import 'package:wether_app/view/home/components/location.dart';
+import 'package:wether_app/view_model/controllers/Auth_controller.dart';
 import 'package:wether_app/view_model/controllers/home_controller.dart';
+import 'package:wether_app/view_model/services/auth_service/auth_service.dart';
 import 'package:wether_app/view_model/services/splash_services/splash_services.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,10 +16,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  AuthController authController = Get.put(AuthController());
   @override
   void initState() {
     super.initState();
-    // TODO: implement initState
+    // checkLoginforscreen();
+    Future.delayed(const Duration(seconds: 2),(){
+      AuthService.isLogedIn('/home');
+    });
     SplashServices.getApiData();
   }
 
@@ -51,9 +57,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.log('route: ${Get.routing.route}');
-                            Get.log('route tree : ${Get.routeTree}');
-                            Get.log('prevoious : ${Get.routing.previous}');
+                            // Get.log('route: ${Get.routing.route}');
+                            // Get.log('route tree : ${Get.routeTree}');
+                            // Get.log('prevoious : ${Get.routing.previous}');
                             Get.toNamed('/Next14Day');
                           },
                           child: const Padding(
@@ -91,4 +97,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  // void checkLoginforscreen() {}
 }
