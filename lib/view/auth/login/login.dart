@@ -14,11 +14,19 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2),(){
-      AuthService.isLogedIn('/Login');
-    });
-  }
 
+    loginCheck();
+  }
+  void loginCheck() async{
+    if(AuthController.isLogedInCheked.value){
+
+    }
+    else {
+
+      await AuthService.isLogedIn('/Login');
+
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Center(
         child: ElevatedButton(
           onPressed: ()async{
-            if( await AuthService.login()){
+            if(await AuthService.login()){
               Get.offAllNamed('/HomeScreen');
             }
             else{

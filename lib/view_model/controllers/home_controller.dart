@@ -12,6 +12,7 @@ class HomeController extends GetxController {
   Rx<int> currentIndex = 0.obs;
   RxBool animator = false.obs;
   RxBool dataLoaded = false.obs;
+  RxString nameFromBottom = "".obs;
 
 
   int getCurrentIndex() => currentIndex.value;

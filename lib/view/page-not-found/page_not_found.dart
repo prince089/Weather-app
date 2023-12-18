@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NotFoundPage extends StatelessWidget {
   @override
@@ -25,7 +26,7 @@ class NotFoundPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // Navigate to the home page or any other page as needed
-                Navigator.of(context).pushReplacementNamed('/');
+               Get.offAllNamed('/Login');
               },
               child: const Text('Go to Home'),
             ),

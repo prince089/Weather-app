@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:wether_app/view/auth/login/login.dart';
 import 'package:wether_app/view/home/home_screen.dart';
 import 'package:wether_app/view/next-days/next_14_days.dart';
 import 'package:wether_app/view/page-not-found/page_not_found.dart';
@@ -16,6 +17,11 @@ class RouteManager {
     if (settings.name == '/') {
       return GetPageRoute(
         page: () => SplashScreen(),
+      );
+    }
+    if(settings.name == '/Login'){
+      return GetPageRoute(
+        page: ()=>LoginScreen(),
       );
     }
     if (settings.name == '/HomeScreen') {

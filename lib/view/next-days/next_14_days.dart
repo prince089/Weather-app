@@ -7,6 +7,7 @@ import 'package:wether_app/view/next-days/components/bottom_list.dart';
 import 'package:wether_app/view/next-days/components/days_list.dart';
 import 'package:wether_app/view_model/controllers/Auth_controller.dart';
 import 'package:wether_app/view_model/controllers/days_controller.dart';
+import 'package:wether_app/view_model/services/auth_service/auth_service.dart';
 import 'package:wether_app/view_model/services/splash_services/splash_services.dart';
 import 'components/center_card.dart';
 
@@ -19,12 +20,23 @@ class NextDays extends StatefulWidget {
 
 class _NextDaysState extends State<NextDays> {
   AuthController authController = Get.put(AuthController());
+  // bool isInitComplete = false;
   @override
   void initState() {
     super.initState();
+    loginCheck();
+  }
 
-      SplashServices.getApiData2();
+  void loginCheck() async {
 
+      if (AuthController.isLogedInCheked.value) {
+        // isInitComplete = true;
+      } else {
+        await AuthService.isLogedIn('/Next14Day');
+        // isInitComplete = true;
+      }
+
+    SplashServices.getApiData2();
   }
 
   final controller = Get.put(DaysController());

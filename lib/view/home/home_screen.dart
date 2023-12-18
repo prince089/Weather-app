@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wether_app/view/home/components/app_bar.dart';
 import 'package:wether_app/view/home/components/container_list.dart';
 import 'package:wether_app/view/home/components/hours_list.dart';
 import 'package:wether_app/view/home/components/info_card.dart';
@@ -17,22 +18,31 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   AuthController authController = Get.put(AuthController());
+  // bool isLoginCheckComplete = false;
   @override
   void initState() {
     super.initState();
-    // checkLoginforscreen();
-    Future.delayed(const Duration(seconds: 2),(){
-      AuthService.isLogedIn('/home');
-    });
+    loginCheck();
+
+  }
+
+  void loginCheck() async{
+    if(AuthController.isLogedInCheked.value){
+    }else{
+      await AuthService.isLogedIn('/HomeScreen');
+      // isLoginCheckComplete = true;
+    }
     SplashServices.getApiData();
   }
+
+
+
 
   final controller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        // controller.isNull ?ProgressIndicator : ,
         child: Obx(
           () => controller.dataLoaded.value
               ? Padding(
@@ -40,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
+                         CustomAppBar(),
                         const SizedBox(
                           height: 20,
                         ),
@@ -97,6 +108,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+
 
   // void checkLoginforscreen() {}
 }
